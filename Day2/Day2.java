@@ -1,9 +1,11 @@
 import java.util.*;
 import java.io.*;
 
-public class Day1 { 
+public class Day2 { 
+
+   
     public static void main(String[] args) {
-        Integer max = 0; //Final output;
+        int top1 = 0, top2 =0, top3 = 0;
         try {
 
             FileInputStream f = new FileInputStream("input.txt");
@@ -15,13 +17,27 @@ public class Day1 {
             while(line.hasNextLine()) {
                 temp = line.nextLine();
                 if(temp == "") {
-                    max = Integer.max(tempMax, max);
+                    if(tempMax > top3) {
+                        top3 = tempMax;
+
+                        if(top3 > top2) {
+                            int temp2 = top3;
+                            top3 = top2;
+                            top2 =temp2;
+                        }
+
+                        if(top2 > top1) {
+                            int temp2 = top2;
+                            top2 = top1;
+                            top1 =temp2;
+                        }
+
+                    }
                     tempMax = 0;
                 } else {
                     tempMax += Integer.parseInt(temp);
                 }
             }
-            max = Integer.max(tempMax, max);
             line.close();
             f.close();
         
@@ -29,6 +45,6 @@ public class Day1 {
             System.out.println(e);
         }
 
-        System.out.println(max);
+        System.out.println(top1 + top2 + top3);
     }
 }
