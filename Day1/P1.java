@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-public class Day1 { 
+public class P1 { 
     public static void main(String[] args) {
         Integer max = 0; //Final output;
         try {
